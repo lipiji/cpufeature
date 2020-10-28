@@ -123,8 +123,8 @@ void detect_cache(void) {
         0x04: Deterministic Cache Parameters by level
         This holds the L1/2/3 cache size that we want
     */
-    int level, ways, partitions, line_size, sets, total_size;
-    for(int I = 1; I < 10; I++) {
+    int I, level, ways, partitions, line_size, sets, total_size;
+    for(I = 1; I < 10; I++) {
         cpuid(info, 0x04, I);
         level      = (info[0] & 112) >> 5;
         ways       = 1 + ((info[1] & 4290772992) >> 22); // 10 bits width << 22 bits shifted
